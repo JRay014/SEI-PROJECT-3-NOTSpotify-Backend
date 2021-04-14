@@ -1,0 +1,26 @@
+{
+  "name": "SEI-PROJECT-3-NOTSpotify-Backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JRay014/SEI-PROJECT-3-NOTSpotify-Backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JRay014/SEI-PROJECT-3-NOTSpotify-Backend/issues"
+  },
+  "homepage": "https://github.com/JRay014/SEI-PROJECT-3-NOTSpotify-Backend#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.12.3"
+  }
+}
