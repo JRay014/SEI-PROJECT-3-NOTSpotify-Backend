@@ -47,6 +47,24 @@ notspotify.delete('/:id', (req, res) => {
     })
 })
 
+// UPDATE ROUTE
+notspotify.put('/:id', (req, res) => {
+
+    playlistModel.findByIdAndUpdate(req.params.id, req.body, { new: true }, (error, updatedPlaylist) => {
+        if (error) {
+            res.status(400).json({ error: error.message })
+        }
+        else {
+            res.status(200).json({
+                message: `Holiday ${updatedPlaylist.id} updated successfully`,
+                data: updatedPlaylist
+            })
+        }
+    })
+})
+
+
+
 
 
 module.exports = notspotify
