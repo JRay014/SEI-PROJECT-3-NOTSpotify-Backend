@@ -56,7 +56,7 @@ notspotify.put('/:id', (req, res) => {
         }
         else {
             res.status(200).json({
-                message: `Holiday ${updatedPlaylist.id} updated successfully`,
+                message: `${updatedPlaylist.id} Playlist updated successfully`,
                 data: updatedPlaylist
             })
         }
