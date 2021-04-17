@@ -4,7 +4,7 @@ const notspotify = express.Router()
 const playlistModel = require('../models/playlist')
 
 
-//post route
+//POST ROUTE
 notspotify.post('/', (req, res) => {
     playlistModel.create(req.body, (error, createPlaylist) => {
         if (error) {
@@ -17,8 +17,7 @@ notspotify.post('/', (req, res) => {
 
 })
 
-//Index route
-
+//INDEX ROUTE
 notspotify.get('/', (req, res) => {
 
     playlistModel.find({}, (error, foundPlaylists) => {
@@ -31,7 +30,7 @@ notspotify.get('/', (req, res) => {
     })
 })
 
-//Delete route
+//DELETE ROUTE
 notspotify.delete('/:id', (req, res) => {
 
     playlistModel.findByIdAndDelete(req.params.id, (error, deletedPlaylist) => {
@@ -47,7 +46,7 @@ notspotify.delete('/:id', (req, res) => {
     })
 })
 
-// UPDATE ROUTE
+//UPDATE ROUTE
 notspotify.put('/:id', (req, res) => {
 
     playlistModel.findByIdAndUpdate(req.params.id, req.body, { new: true }, (error, updatedPlaylist) => {
