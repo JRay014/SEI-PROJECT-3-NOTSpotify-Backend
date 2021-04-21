@@ -3,17 +3,9 @@ const notspotify = express.Router()
 const playlistModel = require('../models/playlist')
 
 
-const isAuthenticated = (req, res, next) => {
-  if (req.session.currentUser) {
-    return next()
-  } else {
-    res.redirect('/register')
-  }
-}
-
 
 //POST ROUTE
-notspotify.post('/', isAuthenticated,(req, res) => {
+notspotify.post('/',(req, res) => {
     playlistModel.create(req.body, (error, createPlaylist) => {
         if (error) {
             res.status(400).json({ error: error.message })
@@ -26,7 +18,7 @@ notspotify.post('/', isAuthenticated,(req, res) => {
 })
 
 //INDEX ROUTE
-notspotify.get('/', isAuthenticated, (req, res) => {
+notspotify.get('/', (req, res) => {
 
     playlistModel.find({}, (error, foundPlaylists) => {
         if (error) {
@@ -39,7 +31,7 @@ notspotify.get('/', isAuthenticated, (req, res) => {
 })
 
 //DELETE ROUTE
-notspotify.delete('/:id',isAuthenticated, (req, res) => {
+notspotify.delete('/:id', (req, res) => {
 
     playlistModel.findByIdAndDelete(req.params.id, (error, deletedPlaylist) => {
         if (error) {
@@ -49,13 +41,13 @@ notspotify.delete('/:id',isAuthenticated, (req, res) => {
             res.status(404).json({ message: 'Playlist id not Found' })
         }
         else {
-            res.status(200).json({ message: `Playlist ${deletedPlaylist.name} deleted successfully` })
+            res.status(200).json({ message: `Playlist ${deletedPlaylist.name} deleted successfully` ,currentUser:req.session.currentUser})
         }
     })
 })
 
 //UPDATE ROUTE
-notspotify.put('/:id', isAuthenticated, (req, res) => {
+notspotify.put('/:id', (req, res) => {
 
     playlistModel.findByIdAndUpdate(req.params.id, req.body, { new: true }, (error, updatedPlaylist) => {
         if (error) {

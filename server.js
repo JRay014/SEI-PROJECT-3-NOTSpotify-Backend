@@ -46,7 +46,13 @@ app.use(session({
   saveUninitialized: false
 }))
 
-
+const isAuthenticated = (req, res, next) => {
+  if (req.session.currentUser) {
+    return next()
+  } else {
+    res.status(403).json({msg:"Please Log In"})
+  }
+}
 
 
 //controllers
