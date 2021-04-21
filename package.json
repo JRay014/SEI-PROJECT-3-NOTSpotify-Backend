@@ -23,6 +23,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
-    "mongoose": "^5.12.3"
+    "mongoose": "^5.12.3",
+    "musixmatch-node": "^1.0.2"
   }
 }
