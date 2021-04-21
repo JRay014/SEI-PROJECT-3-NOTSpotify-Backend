@@ -5,7 +5,8 @@ const playlistModel = require('../models/playlist')
 
 
 //POST ROUTE
-notspotify.post('/',(req, res) => {
+notspotify.post('/', (req, res) => {
+
     playlistModel.create(req.body, (error, createPlaylist) => {
         if (error) {
             res.status(400).json({ error: error.message })
@@ -41,7 +42,7 @@ notspotify.delete('/:id', (req, res) => {
             res.status(404).json({ message: 'Playlist id not Found' })
         }
         else {
-            res.status(200).json({ message: `Playlist ${deletedPlaylist.name} deleted successfully` ,currentUser:req.session.currentUser})
+            res.status(200).json({ message: `Playlist ${deletedPlaylist.name} deleted successfully`, currentUser: req.session.currentUser })
         }
     })
 })
@@ -102,18 +103,18 @@ notspotify.get('/seed', (req, res) => {
 getSongFromAPI = async (event) => {
     event.preventDefault()
     try {
-      console.log(this.state.rootURL + this.state.apiKey + this.state.query + 'Rivers%20and%20Roads')
-      const response = await fetch(this.state.rootURL + this.state.apiKey + this.state.query + 'Rivers%20and%20Roads')
-      const parseData = await response.json()
-      console.log(parseData)
-      this.setState({
-        querySongs: parseData,
-        queryURL: ''
-      })
-    } catch(err) {
-      console.log(err)
+        console.log(this.state.rootURL + this.state.apiKey + this.state.query + 'Rivers%20and%20Roads')
+        const response = await fetch(this.state.rootURL + this.state.apiKey + this.state.query + 'Rivers%20and%20Roads')
+        const parseData = await response.json()
+        console.log(parseData)
+        this.setState({
+            querySongs: parseData,
+            queryURL: ''
+        })
+    } catch (err) {
+        console.log(err)
     }
-  }
+}
 
 
 
