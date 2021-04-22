@@ -1,12 +1,17 @@
 const express = require('express')
 const app = express()
-const PORT = 3003
 const session = require('express-session')
 
 const mongoose = require('mongoose');
 const cors = require('cors')
 
 app.use(express.json());
+
+//Port
+const PORT = process.env.PORT || 3003
+app.listen(PORT, () => {
+    console.log(`listening on ${PORT}`)
+})
 
 // Setup Cors middleware
 const whitelist = ['http://localhost:3000']
@@ -31,7 +36,7 @@ mongoose.connect('mongodb://localhost:27017/notspotfy', {
 
 // set up listeners to monitor your DB connection
 const db = mongoose.connection;
-db.once('open', () => console.log('DB connected...'));
+db.once('open', () => console.log('Mongoose connected...'));
 db.on('error', (error) => console.log(error.message));
 db.on('disconnected', () => console.log('Mongoose disconnected...'));
 
@@ -56,12 +61,6 @@ const isAuthenticated = (req, res, next) => {
 
 
 //controllers
-
 app.use('/notspotify', require('./controllers/notSpotifyController'))
 app.use('/users', require('./controllers/users'))
 app.use('/sessions',require('./controllers/sessions'))
-
-
-app.listen(PORT, () => {
-    console.log(`listening on ${PORT}`)
-})

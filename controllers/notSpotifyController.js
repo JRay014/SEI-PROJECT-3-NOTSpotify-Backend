@@ -64,42 +64,5 @@ notspotify.put('/:id', (req, res) => {
     })
 })
 
-//SEED ROUTE
-notspotify.get('/seed', (req, res) => {
-    playlistModel.create([
-        {
-            name: "Hype",
-            songs: [
-                {
-                    name: "imagine if",
-                    artist: "gnash"
-                },
-                {
-                    name: "Just Lose It",
-                    artist: "Eminem"
-                },
-                {
-                    name: "B.O.B",
-                    artist: "Outkast"
-                },
-                {
-                    name: "Despacito",
-                    artist: "Luis Fonsi"
-                },
-                {
-                    name: "Garota Nacional",
-                    artist: "Skank"
-                }
-            ]
-        },
-    ], (error, data) => {
-        if (error) {
-            console.log(error)
-        }
-        res.redirect('/notspotify')
-    })
-})
-
-
 
 module.exports = notspotify
