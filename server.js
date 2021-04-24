@@ -28,7 +28,7 @@ const corsOptions = {
 app.use(cors(corsOptions))
 
 // SETUP mongoose
-mongoose.connect('mongodb://localhost:27017/notspotfy', {
+mongoose.connect(`${process.env.MONGODBURI}`, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false
