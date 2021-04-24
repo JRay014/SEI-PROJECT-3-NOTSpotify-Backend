@@ -10,11 +10,11 @@ app.use(express.json());
 //Port
 const PORT = process.env.PORT || 3003
 app.listen(PORT, () => {
-    console.log(`listening on ${PORT}`)
+  console.log(`listening on ${PORT}`)
 })
 
 // Setup Cors middleware
-const whitelist = ['http://localhost:3000']
+const whitelist = ['http://localhost:3000', 'https://project-3-notspotfy-frontend.herokuapp.com']
 const corsOptions = {
     origin: function (origin, callback) {
         if (whitelist.indexOf(origin) !== -1 || !origin) {
