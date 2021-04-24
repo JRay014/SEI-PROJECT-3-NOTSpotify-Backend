@@ -18,7 +18,7 @@ app.listen(PORT, () => {
 const whitelist = ['http://localhost:3000', 'https://project-3-notspotify-frontend.herokuapp.com']
 const corsOptions = {
     origin: function (origin, callback) {
-      console.log('this is the origin.............', origin) 
+      // console.log('this is the origin.............', origin) 
         if (whitelist.indexOf(origin) !== -1 || !origin) {
             callback(null, true)
         } else {
